@@ -13,9 +13,17 @@ routes.get('/instructors', (req, res) => {
 
 routes.post('/instructors', InstructorsController.Post)
 
+routes.put('/instructors', InstructorsController.Put)
+
+routes.delete('/instructors', InstructorsController.Delete)
+
 routes.get('/instructors/create', (req, res) => {
   return res.render('instructors/create')
 })
+
+routes.get('/instructors/:id', InstructorsController.Show)
+
+routes.get('/instructors/:id/edit', InstructorsController.Edit)
 
 routes.get('/members', (req, res) => {
   return res.send('members')
