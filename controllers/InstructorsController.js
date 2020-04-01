@@ -31,6 +31,10 @@ module.exports = {
     })
   },
 
+  Create(req, res) {
+    return res.render('instructors/create')
+  },
+
   Show(req, res) {
     // query = ?id
     // body = json { id }
