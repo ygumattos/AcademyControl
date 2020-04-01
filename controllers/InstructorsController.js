@@ -60,7 +60,8 @@ module.exports = {
 
     const instructor = {
       ...foundInstructor,
-      birth: date(foundInstructor.birth)
+      birth: date(foundInstructor.birth),
+      id: Number(req.body.id)
     }
 
     return res.render("instructors/edit", { instructor })
@@ -104,5 +105,9 @@ module.exports = {
 
     return res.redirect('/instructors')
 
+  },
+
+  Index(req, res) {
+    return res.render("instructors/index", { instructors: data.instructors })
   }
 }

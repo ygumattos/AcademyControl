@@ -7,9 +7,7 @@ routes.get('/', (req, res) => {
   return res.redirect("/instructors")
 })
 
-routes.get('/instructors', (req, res) => {
-  return res.render('instructors/index')
-})
+routes.get('/instructors', InstructorsController.Index);
 
 routes.post('/instructors', InstructorsController.Post)
 
