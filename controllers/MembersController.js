@@ -1,6 +1,7 @@
 const fs = require('fs')
 const data = require('../data.json')
-const { age, date } = require('../utils/date.js')
+const { date } = require('../utils/date.js')
+const converBlood = require('../utils/blood')
 
 module.exports = {
 
@@ -20,8 +21,8 @@ module.exports = {
     const member = {
       ...foundMember,
       gender: foundMember.gender == "M" ? "Masculino" : "Feminino",
-      services: foundMember.services.split(","),
-      age: age(foundMember.birth),
+      birth: date(foundMember.birth).birthDay,
+      blood: converBlood(foundMember.blood),
       created_at: new Intl.DateTimeFormat("en-GB").format(foundMember.created_at),
     }
 
@@ -38,15 +39,12 @@ module.exports = {
         return res.send('Please, fill all fields !')
     }
 
-    const { avatar_url, name, services, gender } = req.body
+    const lastMember = data.members[data.members.length - 1]
 
     data.members.push({
-      id: Number(data.members.length + 1),
-      avatar_url,
-      name,
+      id: lastMember ? (lastMember.id + 1) : 1,
+      ...req.body,
       birth: Date.parse(req.body.birth),
-      gender,
-      services,
       created_at: Date.now(),
     })
 
@@ -69,8 +67,8 @@ module.exports = {
 
     const member = {
       ...foundMember,
-      birth: date(foundMember.birth),
-      id: Number(req.body.id)
+      birth: date(foundMember.birth).iso,
+      id: Number(id)
     }
 
     return res.render("members/edit", { member })
@@ -81,7 +79,10 @@ module.exports = {
     let index = 0
 
     const foundMember = data.members.find((member, foundIndex) => {
-      if (member.id == id) return index = foundIndex
+      if (member.id == id) {
+        index = foundIndex
+        return true
+      }
     })
 
     if (!foundMember) return res.send("Member not found !!")

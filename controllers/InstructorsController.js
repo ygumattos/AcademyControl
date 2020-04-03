@@ -64,7 +64,7 @@ module.exports = {
 
     const instructor = {
       ...foundInstructor,
-      birth: date(foundInstructor.birth),
+      birth: date(foundInstructor.birth).iso,
       id: Number(req.body.id)
     }
 
