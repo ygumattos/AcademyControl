@@ -23,6 +23,23 @@
       "weight": "75",
       "height": "170",
       "created_at": 1585943177740
+    },
+    {
+      "id": 3,
+      "avatar_url": "https://google.com",
+      "name": "Bob com endereço",
+      "email": "ygor.mattos@techmahindra.com",
+      "birth": 944956800000,
+      "gender": "M",
+      "cep": "06413-010",
+      "street": "x",
+      "neighborhood": "x",
+      "city": "x",
+      "state": "x",
+      "blood": "A1",
+      "weight": "100",
+      "height": "100",
+      "created_at": 1585946650471
     }
   ],
   "instructors": [

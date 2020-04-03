@@ -7,3 +7,15 @@ for (item of menuItems) {
   }
 }
 
+// Fill CEP
+
+const fieldsetInputs = document.querySelectorAll("form fieldset input:not(#cep)"); //without cep
+const inputCEP = document.querySelector("form fieldset input#cep")
+
+function fillAdress() {
+  fieldsetInputs.forEach(input => {
+    input.removeAttribute("disabled")
+    input.value = "Qualquer texto"
+  })
+  console.log("TO AQUIS")
+}

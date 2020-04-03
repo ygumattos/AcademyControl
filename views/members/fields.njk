@@ -38,50 +38,94 @@
   </div>
 </div>
 
-<div class="item">
-  <div>Tipo Sanguíneo</div>
-  <div>
-    <select name="blood">
-      <option value="A1" {% if member.blood == "A1" %} selected="selected" {% endif %}>
-        A+
-      </option>
-      <option value="A0" {% if member.blood == "A0" %} selected="selected" {% endif %}>
-        A-
-      </option>
-      <option value="B1" {% if member.blood == "B1" %} selected="selected" {% endif %}>
-        B+
-      </option>
-      <option value="B0" {% if member.blood == "B0" %} selected="selected" {% endif %}>
-        B-
-      </option>
-      <option value="AB1" {% if member.blood == "AB1" %} selected="selected" {% endif %}>
-        AB+
-      </option>
-      <option value="AB0" {% if member.blood == "AB0" %} selected="selected" {% endif %}>
-        AB-
-      </option>
-      <option value="O1" {% if member.blood == "O1" %} selected="selected" {% endif %}>
-        O+
-      </option>
-      <option value="O0" {% if member.blood == "O0" %} selected="selected" {% endif %}>
-        O-
-      </option>
-    </select>
+<fieldset>
+  <legend>Endereço</legend>
+  <div class="item">
+    <div>CEP</div>
+    <div>
+      <input id="cep" onfocusout="fillAdress()" type="text" name="cep" placeholder="00000-00" value="{{ member.cep }}" required="required" pattern="\d{5}-\d{3}">
+    </div>
   </div>
 </div>
 
 <div class="item">
-  <div>Peso (kg)</div>
+  <div>Rua</div>
   <div>
-    <input type="number" name="weight" value="{{ member.weight }}">
+    <input type="text" name="street" value="{{ member.street }}" disabled="disabled">
   </div>
+</div>
 </div>
 
 <div class="item">
-  <div>Altura (cm)</div>
-  <div>
-    <input type="number" name="height" value="{{ member.height }}">
-  </div>
+<div>Bairro</div>
+<div>
+  <input type="text" name="neighborhood" value="{{ member.neighborhood }}" disabled="disabled">
+</div>
+</div>
+</div>
+
+<div class="item">
+<div>Cidade</div>
+<div>
+<input type="text" name="city" value="{{ member.city }}" disabled="disabled">
+</div>
+</div>
+</div>
+
+<div class="item">
+<div>Estado</div>
+<div>
+<input type="text" name="state" value="{{ member.state }}" disabled="disabled">
+</div>
+</div>
+</div>
+
+</fieldset>
+
+<div class="item">
+<div>Tipo Sanguíneo</div>
+<div>
+<select name="blood">
+<option value="A1" {% if member.blood == "A1" %} selected="selected" {% endif %}>
+A+
+</option>
+<option value="A0" {% if member.blood == "A0" %} selected="selected" {% endif %}>
+A-
+</option>
+<option value="B1" {% if member.blood == "B1" %} selected="selected" {% endif %}>
+B+
+</option>
+<option value="B0" {% if member.blood == "B0" %} selected="selected" {% endif %}>
+B-
+</option>
+<option value="AB1" {% if member.blood == "AB1" %} selected="selected" {% endif %}>
+AB+
+</option>
+<option value="AB0" {% if member.blood == "AB0" %} selected="selected" {% endif %}>
+AB-
+</option>
+<option value="O1" {% if member.blood == "O1" %} selected="selected" {% endif %}>
+O+
+</option>
+<option value="O0" {% if member.blood == "O0" %} selected="selected" {% endif %}>
+O-
+</option>
+</select>
+</div>
+</div>
+
+<div class="item">
+<div>Peso (kg)</div>
+<div>
+<input type="number" name="weight" value="{{ member.weight }}">
+</div>
+</div>
+
+<div class="item">
+<div>Altura (cm)</div>
+<div>
+<input type="number" name="height" value="{{ member.height }}">
+</div>
 </div>
 
 <button type="submit">Salvar</button>

@@ -114,7 +114,8 @@ header {
 }
 
 .details h3,
-.details .item div:nth-child(1) {
+.details .item div:nth-child(1),
+form fieldset legend {
   font-size: 14px;
   line-height: 24px;
   color: #777;
@@ -149,7 +150,7 @@ header {
 
 /* -- FORM -- */
 
-input, select {
+input, select{
   width: 100%;
   outline: none;
   color: #555;
@@ -169,6 +170,23 @@ input[type="radio"], label {
 input::placeholder {
   font-size: 16px;
   font-weight: normal;
+}
+
+input:disabled , select {
+  border-radius: 5px;
+}
+
+input:disabled {
+  background-color: #d9d9d9;
+}
+
+form fieldset legend {
+  text-align: center;
+  padding-top: 10px;
+}
+
+form fieldset {
+  border-bottom: 1px solid #d9d9d9;
 }
 
 button[type="submit"],
