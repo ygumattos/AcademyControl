@@ -1,73 +1,122 @@
-<div class="item">
-  <div>Avatar URL</div>
-  <div>
-    <input type="url" name="avatar_url" placeholder="https://" value="{{ member.avatar_url }}">
-  </div>
-</div>
-
-<div class="item">
-  <div>Nome</div>
-  <div>
-    <input type="text" name="name" value="{{ member.name }}">
-  </div>
-</div>
-
-<div class="item">
-  <div>Email</div>
-  <div>
-    <input type="email" name="email" placeholder="email@email.com" value="{{ member.email }}">
-  </div>
-</div>
-
-<div class="item">
-  <div>Data de nascimento</div>
-  <div>
-    <input type="date" name="birth" value="{{ member.birth }}">
-  </div>
-</div>
-
-<div class="item">
-  <div>Sexo</div>
-  <div>
-    <span>
-      <label for="M"><input type="radio" id="M" name="gender" value="M" {% if member.gender == 'M' %} checked="checked" {% endif %}>Masculino</label>
-    </span>
-    <span>
-      <label for="F"><input type="radio" id="F" name="gender" value="F" {% if member.gender == 'F' %} checked="checked" {% endif %}>Feminino</label>
-    </span>
-  </div>
-</div>
-
-<fieldset>
-  <legend>Endereço</legend>
+<section class="areaA">
   <div class="item">
-    <div>CEP</div>
+    <div>Avatar URL</div>
     <div>
-      <input id="cep" onfocusout="setCep(), fillAdress()" type="text" name="cep" placeholder="00000-00" value="{{ member.cep }}" required="required" pattern="\d{5}-\d{3}">
+      <input type="url" name="avatar_url" placeholder="https://" value="{{ member.avatar_url }}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Nome</div>
+    <div>
+      <input type="text" name="name" value="{{ member.name }}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Email</div>
+    <div>
+      <input type="email" name="email" placeholder="email@email.com" value="{{ member.email }}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Data de nascimento</div>
+    <div>
+      <input type="date" name="birth" value="{{ member.birth }}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Sexo</div>
+    <div>
+      <span>
+        <label for="M"><input type="radio" id="M" name="gender" value="M" {% if member.gender == 'M' %} checked="checked" {% endif %}>Masculino</label>
+      </span>
+      <span>
+        <label for="F"><input type="radio" id="F" name="gender" value="F" {% if member.gender == 'F' %} checked="checked" {% endif %}>Feminino</label>
+      </span>
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Tipo Sanguíneo</div>
+    <div>
+      <select name="blood">
+        <option value="A1" {% if member.blood == "A1" %} selected="selected" {% endif %}>
+          A+
+        </option>
+        <option value="A0" {% if member.blood == "A0" %} selected="selected" {% endif %}>
+          A-
+        </option>
+        <option value="B1" {% if member.blood == "B1" %} selected="selected" {% endif %}>
+          B+
+        </option>
+        <option value="B0" {% if member.blood == "B0" %} selected="selected" {% endif %}>
+          B-
+        </option>
+        <option value="AB1" {% if member.blood == "AB1" %} selected="selected" {% endif %}>
+          AB+
+        </option>
+        <option value="AB0" {% if member.blood == "AB0" %} selected="selected" {% endif %}>
+          AB-
+        </option>
+        <option value="O1" {% if member.blood == "O1" %} selected="selected" {% endif %}>
+          O+
+        </option>
+        <option value="O0" {% if member.blood == "O0" %} selected="selected" {% endif %}>
+          O-
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Peso (kg)</div>
+    <div>
+      <input type="number" name="weight" value="{{ member.weight }}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Altura (cm)</div>
+    <div>
+      <input type="number" name="height" value="{{ member.height }}">
+    </div>
+  </div>
+</section>
+
+<section class="areaB">
+
+  <fieldset>
+    <div class="item">
+      <div>CEP</div>
+      <div>
+        <input id="cep" onfocusout="setCep(), fillAdress()" type="text" name="cep" placeholder="00000-00" value="{{ member.cep }}" required="required" pattern="\d{5}-\d{3}">
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Rua</div>
+    <div>
+      <input type="text" name="street" value="{{ member.street }}" disabled="disabled">
     </div>
   </div>
 </div>
 
 <div class="item">
-  <div>Rua</div>
+  <div>Bairro</div>
   <div>
-    <input type="text" name="street" value="{{ member.street }}" disabled="disabled">
+    <input type="text" name="neighborhood" value="{{ member.neighborhood }}" disabled="disabled">
   </div>
-</div>
-</div>
-
-<div class="item">
-<div>Bairro</div>
-<div>
-  <input type="text" name="neighborhood" value="{{ member.neighborhood }}" disabled="disabled">
-</div>
 </div>
 </div>
 
 <div class="item">
 <div>Cidade</div>
 <div>
-<input type="text" name="city" value="{{ member.city }}" disabled="disabled">
+  <input type="text" name="city" value="{{ member.city }}" disabled="disabled">
 </div>
 </div>
 </div>
@@ -82,50 +131,10 @@
 
 </fieldset>
 
-<div class="item">
-<div>Tipo Sanguíneo</div>
-<div>
-<select name="blood">
-<option value="A1" {% if member.blood == "A1" %} selected="selected" {% endif %}>
-A+
-</option>
-<option value="A0" {% if member.blood == "A0" %} selected="selected" {% endif %}>
-A-
-</option>
-<option value="B1" {% if member.blood == "B1" %} selected="selected" {% endif %}>
-B+
-</option>
-<option value="B0" {% if member.blood == "B0" %} selected="selected" {% endif %}>
-B-
-</option>
-<option value="AB1" {% if member.blood == "AB1" %} selected="selected" {% endif %}>
-AB+
-</option>
-<option value="AB0" {% if member.blood == "AB0" %} selected="selected" {% endif %}>
-AB-
-</option>
-<option value="O1" {% if member.blood == "O1" %} selected="selected" {% endif %}>
-O+
-</option>
-<option value="O0" {% if member.blood == "O0" %} selected="selected" {% endif %}>
-O-
-</option>
-</select>
-</div>
-</div>
+</section>
 
-<div class="item">
-<div>Peso (kg)</div>
-<div>
-<input type="number" name="weight" value="{{ member.weight }}">
-</div>
-</div>
-
-<div class="item">
-<div>Altura (cm)</div>
-<div>
-<input type="number" name="height" value="{{ member.height }}">
-</div>
-</div>
-
+<section class="save">
 <button type="submit">Salvar</button>
+</section>
+
+</section>

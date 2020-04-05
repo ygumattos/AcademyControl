@@ -31,4 +31,6 @@ async function fillAdress() {
     input.value = cep[input.name]
     input.removeAttribute("disabled")
   })
+
+  localStorage.clear();
 }

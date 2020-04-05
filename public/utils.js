@@ -7,10 +7,10 @@ function utils() {
 
     xmlhttp.open("GET", url(String(cep)), true);
 
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = async function () {
       if (xmlhttp.readyState == 4) {
         const response = xmlhttp.responseText
-        localStorage.setItem('cepFull', btoa(JSON.stringify(response)))
+        await localStorage.setItem('cepFull', btoa(JSON.stringify(response)))
       }
     }
 
