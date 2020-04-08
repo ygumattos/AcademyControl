@@ -1,7 +1,9 @@
+const Member = require('../models/Member')
 const { age, date } = require('../../lib/date')
 
 module.exports = {
   Post(req, res) {
+
     const keys = Object.keys(req.body)
 
     for (key of keys) {
@@ -9,7 +11,10 @@ module.exports = {
         return res.send('Please, fill all fields !')
     }
 
-    return;
+    Member.create(req.body, function (member) {
+      return res.redirect(`/members/${member.id}`)
+    })
+
   },
 
   Create(req, res) {
@@ -17,12 +22,22 @@ module.exports = {
   },
 
   Show(req, res) {
-    return
+    Member.find(req.params.id, function (member) {
+      if (!member) return res.send("Member not found !!")
 
+      member.birth = date(member.birth).birthDay
+
+      return res.render('members/show', { member })
+    })
   },
 
   Edit(req, res) {
-    return
+    Member.find(req.params.id, function (member) {
+      if (!member) return res.send("Member not found !!")
+
+      member.birth = date(member.birth).iso
+      return res.render('members/edit', { member })
+    })
   },
 
   Put(req, res) {
@@ -33,15 +48,22 @@ module.exports = {
       if (req.body[key] == "")
         return res.send('Please, fill all fields !')
     }
-    return
+
+    Member.update(req.body, () => {
+      return res.redirect(`/members/${req.body.id}`)
+    })
   },
 
   Delete(req, res) {
-    return
+    Member.delete(req.body.id, () => {
+      return res.redirect(`/members`)
+    })
 
   },
 
-  Index(req, res) {
-    return res.render("members/index")
+  async Index(req, res) {
+    Member.all(function (members) {
+      return res.render("members/index", { members })
+    })
   }
 }
